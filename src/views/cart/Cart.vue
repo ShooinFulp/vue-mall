@@ -1,15 +1,34 @@
 <template>
-    <div>
-
-    </div>
+  <div>
+    <nav-bar>
+      <div slot="center">购物车({{cartLength}})</div>
+     
+    </nav-bar>
+     <div v-for="(item,index) in carts" :key="index">
+        {{item}}
+      </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        
+import NavBar from "components/common/navBar/NavBar";
+
+export default {
+  components: {
+    NavBar
+  },
+  computed: {
+    cartLength() {
+      return this.$store.state.carts.length;
+    },
+    carts(){
+      console.log(this.$store.state.carts);
+      
+      return this.$store.state.carts;
     }
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style  scoped>
 </style>
